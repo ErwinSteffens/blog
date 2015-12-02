@@ -1,6 +1,9 @@
 FROM debian:wheezy
 MAINTAINER Erwin Steffens <erwinsteffens@gmail.com>
 
+# Expose default hugo port
+EXPOSE 1313
+
 # Install pygments (for syntax highlighting) 
 RUN apt-get -qq update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends python-pygments \
@@ -18,3 +21,7 @@ RUN tar xzf /usr/local/${HUGO_BINARY}.tar.gz -C /usr/local/ \
 RUN mkdir /usr/share/blog
 ADD site /usr/share/blog
 RUN hugo -s /usr/share/blog -d /usr/share/nginx/html
+
+# By default, serve site
+ENV HUGO_BASE_URL http://localhost:1313
+CMD hugo server -b ${HUGO_BASE_URL}
