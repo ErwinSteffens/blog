@@ -25,4 +25,4 @@ RUN hugo -d /usr/share/nginx/html
 
 # By default, serve site
 ENV HUGO_BASE_URL http://localhost:1313
-ENTRYPOINT hugo server -b ${HUGO_BASE_URL}
+ENTRYPOINT hugo server -d /usr/share/nginx/html -b ${HUGO_BASE_URL}
