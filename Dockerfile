@@ -20,8 +20,9 @@ RUN tar xzf /usr/local/${HUGO_BINARY}.tar.gz -C /usr/local/ \
 # Create working directory
 RUN mkdir /usr/share/blog
 ADD site /usr/share/blog
-RUN hugo -s /usr/share/blog -d /usr/share/nginx/html
+WORKDIR /usr/share/blog
+RUN hugo -d /usr/share/nginx/html
 
 # By default, serve site
 ENV HUGO_BASE_URL http://localhost:1313
-CMD hugo server -b ${HUGO_BASE_URL}
+ENTRYPOINT hugo server -b ${HUGO_BASE_URL}
