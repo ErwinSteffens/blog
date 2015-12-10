@@ -5,10 +5,10 @@ builddrafts = true
 baseurl = "http://erwinsteffens.com/"
 languageCode = "en-us"
 title = "Erwin Steffens"
-theme = "hyde"
+theme = "blog-theme"
 
 [params]
-	description = "Demo site for a hugo theme"
+	description = "Software developer interested in "
 	google_analytics = "UA-71230170-1"
 	disqusShortname = "erwinsteffens"
 		
