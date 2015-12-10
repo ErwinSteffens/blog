@@ -11,10 +11,10 @@ theme = "hyde"
 	description = "Demo site for a hugo theme"
 	google_analytics = "UA-71230170-1"
 	disqusShortname = "erwinsteffens"
-	themeColor = "theme-base-0c"
-	
+		
 [params.social]
 	github      	= "erwinsteffens"
 	twitter     	= "erwinsteffens"
 	googleplus      = "erwinsteffens"
 	linkedin        = "erwinsteffens"
+	linkedin_url    = "nl.linkedin.com/in/erwinsteffens"

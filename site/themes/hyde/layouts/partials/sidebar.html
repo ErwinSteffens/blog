@@ -1,5 +1,7 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
+    <img class="sidebar-image" src="profile.jpg" />
+    
     <div class="sidebar-about">
       <a href="{{ .Site.BaseURL }}"><h1>{{ .Site.Title }}</h1></a>
       <p class="lead">
@@ -17,16 +19,18 @@
     </ul>
     
     <ul class="sidebar-nav">
-      <li class="sidebar-nav-item">
-        <li class="nav-item">
-          {{ with .Site.Params.social.twitter }}
-          <a class="pure-button" href="https://twitter.com/{{ . }}"><i class="fa fa-twitter fa-2x"></i></a>
-          {{ end }}
-          {{ with .Site.Params.social.github }}
-          <a class="pure-button" href="https://github.com/{{ . }} "><i class="fa fa-github fa-2x"></i></a>
-          {{ end }}
-          <a class="pure-button" href="{{ .Site.BaseURL }}/index.xml"><i class="fa fa-rss fa-2x"></i></a>
-        </li>
-      </ul>
+      <li class="sidebar-nav-item social">
+        {{ with .Site.Params.social.twitter }}
+        <a class="pure-button" href="https://twitter.com/{{ . }}"><i class="fa fa-twitter fa-2x"></i></a>
+        {{ end }}
+        {{ with .Site.Params.social.github }}
+        <a class="pure-button" href="https://github.com/{{ . }}"><i class="fa fa-github fa-2x"></i></a>
+        {{ end }}
+        {{ with .Site.Params.social.linkedin_url }}
+        <a class="pure-button" href="https://{{ . }}"><i class="fa fa-linkedin fa-2x"></i></a>
+        {{ end }}
+        <a class="pure-button" href="{{ .Site.BaseURL }}/index.xml"><i class="fa fa-rss fa-2x"></i></a>
+      </li>
+    </ul>
   </div>
 </div>
