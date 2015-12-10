@@ -4,7 +4,7 @@
  */
 
 html {
-  font-family: 'Vollkorn', serif;
+  font-family: 'Chivo', sans-serif;
 }
 @media (min-width: 48em) {
   html {
@@ -38,13 +38,14 @@ html {
 }
 
 .sidebar-image {
-  
+  display: inline-block;
+  border-radius: 100px;  
 }
 
 .sidebar-about h1 {
   color: #fff;
   margin-top: 0;
-  font-family: "Abril Fatface", serif;
+  font-family: 'Chivo', sans-serif;
   font-size: 3.25rem;
 }
 
