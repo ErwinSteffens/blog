@@ -1,3 +1,0 @@
-[submodule ".\\site\\themes\\blog-theme"]
-	path = .\\site\\themes\\blog-theme
-	url = git@github.com:ErwinSteffens/blog-theme.git
