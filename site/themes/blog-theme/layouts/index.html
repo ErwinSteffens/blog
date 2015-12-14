@@ -1,0 +1,12 @@
+{{ partial "header.html" . }}
+{{ partial "sidebar.html" . }}
+
+  <section class="content container">
+    {{ $paginator := .Paginate (where .Data.Pages "Type" "post") 1 }}
+    {{ range $paginator.Pages }}
+    {{ .Render "li" }}
+    {{ end }}
+    {{ partial "pagination.html" .Paginator }}
+  </section>
+    
+{{ partial "footer.html" . }}

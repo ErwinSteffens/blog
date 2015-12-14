@@ -1,0 +1,45 @@
+<div class="sidebar">
+  <div class="about">
+    <a href="{{ .Site.BaseURL }}">
+      <h1>{{ .Site.Title }}</h1>
+    </a>
+    <p class="lead">
+    {{ with .Site.Params.description }} 
+      {{.}} 
+    {{end}}
+    </p>
+  </div>
+
+  <nav class="main">
+    <ul>
+      <li>
+        <a href="/">Home</a> 
+      </li>
+      {{ range .Site.Menus.main }}
+        <li>
+          <a href="{{.URL}}">{{ .Name }}</a>
+        </li>
+      {{end}}
+      <li>
+        <a href="/post">Posts</a>
+      </li>
+    </ul>
+  </nav>
+  
+  <nav class="social">
+    {{ with .Site.Params.social.twitter }}
+    <a href="https://twitter.com/{{ . }}"><i class="fa fa-twitter fa-2x"></i></a>
+    {{ end }}
+    {{ with .Site.Params.social.github }}
+    <a href="https://github.com/{{ . }}"><i class="fa fa-github fa-2x"></i></a>
+    {{ end }}
+    {{ with .Site.Params.social.linkedin }}
+    <a href="https://www.linkedin.com/in/{{ . }}"><i class="fa fa-linkedin fa-2x"></i></a>
+    {{ end }}
+    <a href="{{ .Site.BaseURL }}/index.xml"><i class="fa fa-rss fa-2x"></i></a>
+  </nav>
+  
+  <section class="generatedby">
+    gererated by <a href="https://gohugo.io" target="_blank">hugo</a>
+  </section>
+</div>
