@@ -1,7 +1,8 @@
 +++
-title = "About me"
+title = "About"
 menu = "main"
 date = "2015-12-09T22:10:38+01:00"
+comments = false
 +++
 
 Hello! I am Erwin Steffens, a software developer from [Schoonebeek, The Netherlands](https://goo.gl/maps/BJwEv6LUr172).
@@ -15,4 +16,10 @@ Always interested in new technologies, programming languages and methods. I spen
 * Asp.NET vNext, NodeJS, AngularJS, Go
 * Microservices
 * Docker 
-* Devops   
+* Devops
+
+## Code
+
+The code for this blog and the theme can be found here: 
+https://github.com/ErwinSteffens/blog
+https://github.com/ErwinSteffens/blog-theme

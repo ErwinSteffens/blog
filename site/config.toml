@@ -8,7 +8,7 @@ title = "Erwin Steffens"
 theme = "blog-theme"
 
 [params]
-	description = "Software developer interested in "
+	description = "Software developer interested in creating scalable applications based on microservices and docker"
 	google_analytics = "UA-71230170-1"
 	disqusShortname = "erwinsteffens"
 		
@@ -17,4 +17,3 @@ theme = "blog-theme"
 	twitter     	= "erwinsteffens"
 	googleplus      = "erwinsteffens"
 	linkedin        = "erwinsteffens"
-	linkedin_url    = "nl.linkedin.com/in/erwinsteffens"
