@@ -24,5 +24,3 @@ The code for this blog and the theme can be found here:
  
 * https://github.com/ErwinSteffens/blog
 * https://github.com/ErwinSteffens/blog-theme
-
-Test 2
