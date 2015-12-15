@@ -4,7 +4,7 @@
  */
 
 html {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 @media (min-width: 48em) {
   html {
@@ -17,11 +17,15 @@ html {
   }
 }
 
+a {
+  color: #73afb6;
+}
+
 .sidebar {
   text-align: center;
   padding: 2rem 1rem;
   color: rgba(255,255,255,.5);
-  background-color: #202020;
+  background-color: #5e9ca0;
 }
 @media (min-width: 48em) {
   .sidebar {
@@ -36,6 +40,7 @@ html {
 
 .sidebar .lead {
   font-size: 1rem;
+  margin-top: 1rem;
 }
 
 .sidebar a {
@@ -46,6 +51,7 @@ html {
   color: #fff;
   margin-top: 0;
   font-size: 3.25rem;
+  line-height: 1;
 }
 
 .sidebar nav ul {
@@ -63,6 +69,9 @@ html {
 .sidebar nav.main li.active {
   font-weight: bold;
 }
+.sidebar nav.social {
+  margin-top: 1.25rem;  
+}
 .sidebar nav.social a {
   font-size: .8rem;
   margin: .25rem;
@@ -70,7 +79,7 @@ html {
 
 .generatedby {
   font-size: .75rem;
-  margin-top: .5rem;
+  margin-top: .75rem;
 }
 
 .content {
@@ -88,7 +97,7 @@ html {
 
 @media (min-width: 64em) {
   .content {
-    margin-left: 22rem;
+    max-width: 50rem;
     margin-right: 4rem;
   }
 }
@@ -113,25 +122,23 @@ html {
 
 .footer {
   text-align: center;
-  padding: 0 7rem;
-  margin-bottom: 2rem;
+  padding-right: 6rem;
+  padding-left: 6rem;
+  margin-top: 5rem;
   font-size: .6rem;
 }
 
 @media (min-width: 48em) {
   .footer {
-    max-width: 38rem;
-    margin-left: 20rem;
-    margin-right: 2rem;
-    font-size: .6rem;
+    padding-right: 8rem;
+    padding-left: 8rem;
   }
 }
 
 @media (min-width: 64em) {
   .footer {
-    margin-left: 22rem;
-    margin-right: 4rem;
-    font-size: .6rem;
+    padding-right: 10rem;
+    padding-left: 10rem;
   }
 }
 

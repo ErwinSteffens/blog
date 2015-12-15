@@ -1,12 +1,13 @@
 {{ partial "header.html" . }}
-{{ partial "sidebar.html" . }}
-	<article class="content container">
-		<h1 class="post-title">{{ .Title }}</h1>
-		<span class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
-		{{ .Content }}
-		{{ if and (isset .Site.Params "disqusShortname") (ne .Site.Params.disqusShortname "") (ne .Params.comments false) }}
-			<h2>Comments</h2>
-			{{ partial "disqus" . }}
-		{{ end }}
-	</article>
+
+<h1 class="post-title">{{ .Title }}</h1>
+{{ if (ne .Params.showdate false) }}
+<span class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
+{{ end }}
+{{ .Content }}
+{{ if and (isset .Site.Params "disqusShortname") (ne .Site.Params.disqusShortname "") (ne .Params.comments false) }}
+	<h2>Comments</h2>
+	{{ partial "disqus" . }}
+{{ end }}
+
 {{ partial "footer.html" . }}
