@@ -1,7 +1,7 @@
 contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
-builddrafts = true
+builddrafts = false
 baseurl = "http://erwinsteffens.com/"
 languageCode = "en-us"
 title = "Erwin Steffens"

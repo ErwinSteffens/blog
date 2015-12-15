@@ -4,6 +4,7 @@ Description = ""
 Tags = ["devops", "docker", "tutum", "hugo"]
 date = "2015-12-09T22:10:38+01:00"
 title = "Auto deploy a hugo blog with Docker and Tutum"
+draft = true
 +++
 
 Because I get a lot of usefull help from people writing blogs I decided to start writing my one blog. My idea is to just write about the things I like and usefull tools I find during my development work. After playing around with different tools I decided to go for a static site generator because of the following advantages:
