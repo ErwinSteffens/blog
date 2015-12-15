@@ -5,3 +5,6 @@
 </h1>
 <span class="post-date">{{ .Date.Format "Mon, Jan 2, 2006" }}</span>
 {{ .Summary }}
+<br/>
+<br/>
+{{ if .Truncated }}<a class="moretag" href="{{ .Permalink }}">Continue reading &#8614;</a>{{ end }}

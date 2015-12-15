@@ -1,8 +1,8 @@
 +++
 title = "About"
 menu = "main"
-date = "2015-12-09T22:10:38+01:00"
 comments = false
+showdate: false
 +++
 
 Hello! I am Erwin Steffens, a software developer from [Schoonebeek, The Netherlands](https://goo.gl/maps/BJwEv6LUr172).
