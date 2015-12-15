@@ -1,2 +1,2 @@
-FROM erwinsteffens:docker-hugo
+FROM erwinsteffens/docker-hugo
 MAINTAINER Erwin Steffens <erwinsteffens@gmail.com>
