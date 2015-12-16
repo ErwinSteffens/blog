@@ -5,6 +5,8 @@ comments = false
 showdate = false
 +++
 
+<img class="profile" src="http://www.gravatar.com/avatar/bb982f60f7ce4de442b37f496730d3fd?s=200" />
+
 Hello! I am Erwin Steffens, a software developer from [Schoonebeek, The Netherlands](https://nl.wikipedia.org/wiki/Schoonebeek).
 
 Currently employed at [Cross Point](http://www.crosspoint.nl) where I build C# .NET based applications for desktop, cloud (Azure) and web. 

@@ -73,8 +73,10 @@ a {
   margin-top: 1.25rem;  
 }
 .sidebar nav.social a {
-  font-size: .8rem;
   margin: .25rem;
+}
+.sidebar nav.social a:first-of-type {
+  margin-left: 0;
 }
 
 .generatedby {
@@ -97,26 +99,8 @@ a {
 
 @media (min-width: 64em) {
   .content {
-    max-width: 50rem;
+    max-width: 44rem;
     margin-right: 4rem;
-  }
-}
-
-@media (min-width: 48em) {
-  .layout-reverse .sidebar {
-    left: auto;
-    right: 0;
-  }
-  .layout-reverse .content {
-    margin-left: 2rem;
-    margin-right: 20rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .layout-reverse .content {
-    margin-left: 4rem;
-    margin-right: 22rem;
   }
 }
 
@@ -145,4 +129,13 @@ a {
 .footer .license img {
   display: inline-block;
   margin: 0;
+}
+
+.profile {
+  float: right;
+  margin-left: 2rem;
+}
+
+code {
+  font-family: Consolas;
 }

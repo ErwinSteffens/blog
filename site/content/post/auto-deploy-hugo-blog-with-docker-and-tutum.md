@@ -1,9 +1,8 @@
 +++
-Categories = ["Devops"]
-Description = ""
-Tags = ["devops", "docker", "tutum", "hugo"]
-date = "2015-12-09T22:10:38+01:00"
 title = "Auto deploy a hugo blog with Docker and Tutum"
+description = "Deploy your hugo blog or any other static website automatically after pushing to master by using Docker and Tutum."
+date = "2015-12-09T22:10:38+01:00"
+tags = ["devops", "docker", "tutum", "hugo"]
 draft = true
 +++
 
@@ -36,7 +35,7 @@ I can explain how to create your hugo blog, but hugo has very good documentation
 
 Next task is to push it to GitHub. I prefer using the commandline for this. Setup your ssh key in your github account (https://help.github.com/articles/generating-ssh-keys/), open the folder where you have created your blog and enter the following commands:
 
-```bash
+``` bash
 echo 'public' > .gitignore
 git init
 git commit -m "Initial commit"
@@ -53,7 +52,7 @@ When you know git this should be familiar. Now your blog content is stored on Gi
 
 A good way to serve static files is to use nginx. Docker provides a base image for nginx which can be found here: https://github.com/dockerfile/nginx. This image serves files from /usr/share/nginx/html. We will create a container which generates the blog files into a volume and attach the volumes from this container to the nginx container. The Dockerfile for this container looks like this:
 
-```docker
+``` dockerfile
 FROM debian:wheezy
 MAINTAINER Erwin Steffens <erwinsteffens@gmail.com>
 
@@ -62,7 +61,7 @@ RUN apt-get -qq update \
 	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends python-pygments \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Download and install hugo
+# Download and install hugo 
 ENV HUGO_VERSION 0.15
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux_amd64
 ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}.tar.gz /usr/local/

@@ -1,10 +1,15 @@
-hugo:
-  build: .
+blog-server-data:
+  image: debian:jessie
   volumes:
-   - /usr/share/nginx/html
-nginx:
+   - "/usr/share/nginx/html"
+  command: "true"
+blog-content:
+  build: .  
+  volumes_from:
+   - "blog-server-data"
+blog-server:
   image: nginx
   ports:
-   - 80:80
+   - "80:80"
   volumes_from:
-    - hugo
+    - "blog-server-data"

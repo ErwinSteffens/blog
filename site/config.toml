@@ -6,14 +6,22 @@ baseurl = "http://erwinsteffens.com/"
 languageCode = "en-us"
 title = "Erwin Steffens"
 theme = "blog-theme"
+disqusShortname = "erwinsteffens"
+paginate = 10
+
+[author]
+ 	name = "Erwin Steffens"
 
 [params]
-	description = "Software developer interested in creating scalable applications based on microservices and docker"
-	google_analytics = "UA-71230170-1"
-	disqusShortname = "erwinsteffens"
-		
-[params.social]
-	github      	= "erwinsteffens"
-	twitter     	= "erwinsteffens"
-	googleplus      = "erwinsteffens"
-	linkedin        = "erwinsteffens"
+    truncate = true
+    highlight = "github"
+    tagline = "Software developer interested in creating scalable applications based on microservices and docker"
+    home = "Home"
+    googleAuthorship = "116367618088685172564"
+    googleAnalytics = "UA-71230170-1"
+    gravatarHash = "bb982f60f7ce4de442b37f496730d3fd"
+    github = "https://github.com/erwinsteffens/"
+    linkedin = "https://linkedin.com/in/erwinsteffens"
+    googleplus = "https://plus.google.com/116367618088685172564/po"
+    twitter = "https://twitter.com/erwinsteffens"
+    rss = false
