@@ -139,3 +139,26 @@ a {
 code {
   font-family: Consolas;
 }
+
+.post-label {
+  display: inline;
+  padding: .2rem .3rem;
+  font-size: 75%;  
+  line-height: 1;
+  color: #fff;
+  margin: 0 .25em;
+  background-color: #73afb6;
+  border-radius: .25em;
+}
+.post-label:first-of-type {
+  margin-left: 0;
+}
+.post-label:hover,
+.post-label:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.post-label:empty {
+  display: none;
+}

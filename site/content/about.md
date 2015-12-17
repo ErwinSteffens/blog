@@ -1,5 +1,6 @@
 +++
 title = "About"
+description = "Software developer interested in creating scalable applications based on microservices and docker"
 menu = "main"
 comments = false
 showdate = false

@@ -1,8 +1,9 @@
 +++
-title = "Auto deploy a hugo blog with Docker and Tutum"
-description = "Deploy your hugo blog or any other static website automatically after pushing to master by using Docker and Tutum."
+title = "Auto deploy your static site with Docker and Tutum"
+description = "Deploy your static website automatically after pushing to master by using Docker and Tutum."
 date = "2015-12-09T22:10:38+01:00"
-tags = ["devops", "docker", "tutum", "hugo"]
+categories = ["tutum", "cd"]
+tags = ["tutum", "cd", "docker", "hugo"]
 draft = true
 +++
 

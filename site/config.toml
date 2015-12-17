@@ -6,17 +6,17 @@ baseurl = "http://erwinsteffens.com/"
 languageCode = "en-us"
 title = "Erwin Steffens"
 theme = "blog-theme"
-disqusShortname = "erwinsteffens"
 paginate = 10
 
 [author]
  	name = "Erwin Steffens"
 
 [params]
-    truncate = true
     highlight = "github"
+    showCategories = false
     tagline = "Software developer interested in creating scalable applications based on microservices and docker"
     home = "Home"
+    disqusShortname = "erwinsteffens"
     googleAuthorship = "116367618088685172564"
     googleAnalytics = "UA-71230170-1"
     gravatarHash = "bb982f60f7ce4de442b37f496730d3fd"

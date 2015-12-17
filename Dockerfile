@@ -1,2 +1,2 @@
-FROM erwinsteffens/docker-hugo
+FROM erwinsteffens/hugo
 MAINTAINER erwinsteffens@crosspoint.nl

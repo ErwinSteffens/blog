@@ -4,7 +4,7 @@
       <h1>{{ .Site.Title }}</h1>
     </a>
     <p class="lead">
-    {{ with .Site.Params.description }} 
+    {{ with .Site.Params.tagline }} 
       {{.}} 
     {{end}}
     </p>
@@ -39,7 +39,8 @@
   </nav>
   
   <section class="generatedby">
-    Proudly published with <a href="https://gohugo.io" target="_blank">hugo</a>
+    Copyright &copy; {{ .Now.Format "2006" }} <a href="{{ "/license/" | absURL }}">License</a><br/>
+    Powered by <a href="https://gohugo.io" target="_blank">hugo</a>
   </section>
   
 </div>
