@@ -7,62 +7,38 @@ tags = ["tutum", "cd", "docker", "hugo"]
 draft = true
 +++
 
-Because I get a lot of usefull help from people writing blogs I decided to start writing my one blog. My idea is to just write about the things I like and usefull tools I find during my development work. After playing around with different tools I decided to go for a static site generator because of the following advantages:
+When I decided to create my own blog I wanted to go for a static site generator. Static sites are fast and secure and really cheap to host. For a developer they are easy to built and a great tool for doing this is [Hugo](https://gohugo.io). Hugo is extremly easy to setup and is really fast. 
 
-* Faster to serve
-* Cheap hosting 
-* Easy to manage
-* Easy to version in Git
-* Secure (No need to patch your CMS!)
+After searching for a docker deployment tool at my current job I came across [Tutum](https://tutum.co). Tutum is a great tool for building, deploying and managing docker containers. To get some experience with docker and Tutum I decided to automaticly deploy my blog with Tutum.
 
-There are a lot of great tools for generating a static website. I decided to use Hugo (https://gohugo.io/). Hugo is an extremly easy tool for building your blog/site from bunch of content files. The following features make it really great:
+> Of course you can deploy each static site using the following steps. Just replace the hugo stuff with your own favorite tool.  
 
-* Extremely fast build times
-* Completely cross platform
-* Easy installation 
-* Render changes on the fly with LiveReload as you develop
-* Complete theme support
-* Integrated Disqus comment support
-* Integrated Google Analytics support
-* Syntax highlighting powered by Pygments 
+## Create blog/site
 
-I wanted to automatic deploy my blog when pushing to the master branch of this repo. For another personal project I was checking out docker and Tutum (https://www.tutum.co/). Tutum is a great tool for managing your docker containers and hosts. It can auto build and deploy your images. They can run on nodes hosted by cloud providers or you can bring yoru own node.
+Hugo has very good documentation. There is a good quick start guide available here: https://gohugo.io/overview/quickstart/. Execute these steps and you will have your hugo blog will be ready in minutes!
 
-### Create blog
+Create your blog in a subfolder called 'site'. It should look like this: 
 
-I can explain how to create your hugo blog, but hugo has very good documentation. There is a good quick start guide available here: https://gohugo.io/overview/quickstart/. Execute these steps and you will have your hugo blog will be ready!
+	.
+	├── Dockerfile
+	└── site
+	    ├── config.toml
+	    ├── content
+	    │   └── ...
+	    ├── layouts
+	    │   └── ...
+	    └── static
+		└── ...
 
-> Create your blog in a subfolder (for example 'site'). This is easiear for the next step.
+## Hugo docker file
 
-Next task is to push it to GitHub. I prefer using the commandline for this. Setup your ssh key in your github account (https://help.github.com/articles/generating-ssh-keys/), open the folder where you have created your blog and enter the following commands:
+I've created a [docker image](https://github.com/ErwinSteffens/docker-hugo) for generating the site content. It is largely based on the image created by [publysher](https://github.com/publysher/docker-hugo). You can use this image as a base image for your blog. 
 
-``` bash
-echo 'public' > .gitignore
-git init
-git commit -m "Initial commit"
-git remove add origin git@github.com:<your-account>/<your-repo>.git
-git push -u origin master
-```
+``` Dockerfile
+FROM debian:jessie
+MAINTAINER erwinsteffens@crosspoint.nl
 
-When you know git this should be familiar. Now your blog content is stored on GitHub. Storing your blog it Git offers numurous advantages: 
-* Complete history of all your changes
-* You can create different branches for expirimenting with themes or content
-* Backup
-
-### Dockerize your hugo blog
-
-A good way to serve static files is to use nginx. Docker provides a base image for nginx which can be found here: https://github.com/dockerfile/nginx. This image serves files from /usr/share/nginx/html. We will create a container which generates the blog files into a volume and attach the volumes from this container to the nginx container. The Dockerfile for this container looks like this:
-
-``` dockerfile
-FROM debian:wheezy
-MAINTAINER Erwin Steffens <erwinsteffens@gmail.com>
-
-# Install pygments (for syntax highlighting) 
-RUN apt-get -qq update \
-	&& DEBIAN_FRONTEND=noninteractive apt-get -qq install -y --no-install-recommends python-pygments \
-	&& rm -rf /var/lib/apt/lists/*
-
-# Download and install hugo 
+# Download and install hugo
 ENV HUGO_VERSION 0.15
 ENV HUGO_BINARY hugo_${HUGO_VERSION}_linux_amd64
 ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_BINARY}.tar.gz /usr/local/
@@ -72,14 +48,64 @@ RUN tar xzf /usr/local/${HUGO_BINARY}.tar.gz -C /usr/local/ \
 
 # Create working directory
 RUN mkdir /usr/share/blog
-ADD site /usr/share/blog
-RUN hugo -s /usr/share/blog -d /usr/share/nginx/html
+WORKDIR /usr/share/blog
+
+# Automatically build site
+ONBUILD ADD site/ /usr/share/blog
+ONBUILD RUN hugo
+
+# Copy files to the nginx folder
+CMD rm -rf /usr/share/nginx/html/*; \
+    cp -r /usr/share/blog/public/* /usr/share/nginx/html; 
 ```
 
-The file is based on the Dockerfile created by publysher (https://github.com/publysher/docker-hugo). The blog content output is stored into the `/usr/share/nginx/html` volume.
+Create a Dockerfile in your blog repository which uses this image as its base. See https://github.com/ErwinSteffens/blog/blob/master/Dockerfile for an example. 
 
-### Auto build your docker image
+## Auto build your docker image
 
-### Setup your Tutum stack
+I choose for hosting my blog on DigitalOcean. They offer basic VM for $5 a month which is more then enough to serve my site. Link cloud provider to your account and create a node cluster. This will provision a Tutum node in your cloud provider environment. 
+
+> At the moment of writing DigitalOcean offers $20 dollar free credit when linking it to Tutum.
+
+To build your blog content image create a new automated build in the repositories tab. Link your GitHub account and select the repository to build. Now open the repository and hit the 'Build' button to start the build. [Click here](https://support.tutum.co/support/solutions/articles/5000638474-automated-builds) for a detailed description. 
+
+## Stack setup
+
+Docker volumes are persistant. As long as there is a container that references the volume it will be kept on the node. The best way of preserving your volume and data is sto use [data volume containers](https://docs.docker.com/engine/userguide/dockervolumes/#creating-and-mounting-a-data-volume-container). They assure that the volume will not be deleted when this container still exists.
+
+My setup is as shown below. I've used a data container called 'site-data'. A container which holds my 'site-content' and an [nginx](https://github.com/nginxinc/docker-nginx) image for serving it. When the 'site-content' is container is started the new files will be copied into the data volume. The data volume is used by nginx to serve the site. By using this method you can update the 'site-content' container which will redeploy the site.
+
+``` bash
+docker run -d -v /usr/share/nginx/html --name site-data debian:jessie true
+docker run -d --volumes-from site-data --name site-content my/blog-image
+docker run -d --volumes-from site-data --name site-server -p 80:80 nginx
+```
+
+> In my first setup I attached the volumes from the 'site-content' container directly. Docker does not apply changes to a data volume when you update an image ([see here](https://docs.docker.com/engine/userguide/dockervolumes/#data-volumes)). If you have any better suggestions for doing this, please let me know.
+
+``` yml
+blog-content:
+  image: 'tutum.co/erwinsteffens/blog:latest'
+  autoredeploy: true
+  tags:
+    - blog
+  volumes_from:
+    - blog-server-data
+blog-server:
+  image: 'nginx:latest'
+  ports:
+    - '80:80'
+  tags:
+    - blog
+  volumes_from:
+    - blog-server-data
+blog-server-data:
+  image: 'debian:jessie'
+  command: 'true'
+  tags:
+    - blog
+  volumes:
+    - /usr/share/nginx/html
+```
 
 ### Test it
