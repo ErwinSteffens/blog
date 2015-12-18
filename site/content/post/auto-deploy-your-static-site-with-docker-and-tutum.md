@@ -63,11 +63,13 @@ Create a Dockerfile in your blog repository which uses this image as its base. S
 
 ## Auto build your docker image
 
-I choose for hosting my blog on DigitalOcean. They offer basic VM for $5 a month which is more then enough to serve my site. Link cloud provider to your account and create a node cluster. This will provision a Tutum node in your cloud provider environment. 
+I chose for hosting my blog on DigitalOcean. They offer a basic VM for $5 a month which is more then enough to serve my site. Link a cloud provider to your account and create a node cluster. This will provision one or more Tutum nodes in your cloud provider environment. 
+
+> Tutum will use one of your nodes for building the docker image. They use a `emptiest node` strategy to select the node to use. When you want to select the build node by yourself you can assign the tag `builder` to the node.
+
+To build your blog content image create a new automated build in the repositories tab. Link your GitHub account and select the repository to build. Now open the repository and hit the 'Build' button to start the build. [Click here](https://support.tutum.co/support/solutions/articles/5000638474-automated-builds) for a detailed description about automated builds. 
 
 > At the moment of writing DigitalOcean offers $20 dollar free credit when linking it to Tutum.
-
-To build your blog content image create a new automated build in the repositories tab. Link your GitHub account and select the repository to build. Now open the repository and hit the 'Build' button to start the build. [Click here](https://support.tutum.co/support/solutions/articles/5000638474-automated-builds) for a detailed description. 
 
 ## Stack setup
 
@@ -82,6 +84,8 @@ docker run -d --volumes-from site-data --name site-server -p 80:80 nginx
 ```
 
 > In my first setup I attached the volumes from the 'site-content' container directly. Docker does not apply changes to a data volume when you update an image ([see here](https://docs.docker.com/engine/userguide/dockervolumes/#data-volumes)). If you have any better suggestions for doing this, please let me know.
+
+To run your services on Tutum you need to create a stack. A stack is a collection of services that make up an application in a specific environment. You can do this through the UI by clicking it together, but you can also define a stackfile. Stackfiles look like docker-compose files but they have some extra features. See the stackfile below for our setup. The `tags` field is optional. It is used for selecting the node to run this service on. When the 'autoredeploy' field is set, Tutum will automaticly re-deploy this container when a new image is available in the repository.
 
 ``` yml
 blog-content:
