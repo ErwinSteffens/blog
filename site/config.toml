@@ -24,4 +24,4 @@ paginate = 10
     linkedin = "https://linkedin.com/in/erwinsteffens"
     googleplus = "https://plus.google.com/116367618088685172564/po"
     twitter = "https://twitter.com/erwinsteffens"
-    rss = false
+    rss = true

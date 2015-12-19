@@ -1,8 +1,6 @@
-<h1 class="post-title">
-	<a href="{{ .Permalink }}">
-	{{ .Title }}
-	</a>	
-</h1>
+{{ partial "header.html" . }}
+
+<h1 class="post-title">{{ .Title }}</h1>
 <span class="post-date">{{ .Date.Format "Jan 2, 2006" }} &middot; {{ .ReadingTime }} minute read{{ if .Site.Params.disqusShortname }} &middot; <a href="{{ .Permalink }}#disqus_thread">Comments</a>{{ end }}
 {{ if and (ne .Site.Params.showCategories false) (.Params.categories) }}
 <div>
@@ -10,7 +8,11 @@
 </div>
 {{ end }}
 </span>
-{{ .Summary }}
+{{ .Content }}
 <br/>
-<br/>
-{{ if .Truncated }}<a href="{{ .Permalink }}">Read On &rarr;</a>{{ end }}
+{{ if and (isset .Site.Params "disqusShortname") (ne .Site.Params.disqusShortname "") (ne .Params.comments false) }}
+	<h2>Comments</h2>
+	{{ partial "disqus" . }}
+{{ end }}
+
+{{ partial "footer.html" . }}

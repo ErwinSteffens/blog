@@ -4,7 +4,7 @@
  */
 
 html {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 @media (min-width: 48em) {
   html {
@@ -27,14 +27,24 @@ a {
   color: rgba(255,255,255,.5);
   background-color: #5e9ca0;
 }
+
 @media (min-width: 48em) {
   .sidebar {
-    text-align: left;
+    text-align: right;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     width: 18rem;
+  }
+}
+
+@media (min-width: 48em) {
+  .sidebar-sticky {
+    position: absolute;
+    right:  1rem;
+    bottom: 1rem;
+    left:   1rem;
   }
 }
 
@@ -45,6 +55,10 @@ a {
 
 .sidebar a {
   color: #fff;
+}
+
+.sidebar nav a {
+  font-size: 1rem;
 }
 
 .sidebar .about h1 {
@@ -102,38 +116,6 @@ a {
     max-width: 44rem;
     margin-right: 4rem;
   }
-}
-
-.footer {
-  text-align: center;
-  padding-right: 6rem;
-  padding-left: 6rem;
-  margin-top: 5rem;
-  font-size: .6rem;
-}
-
-@media (min-width: 48em) {
-  .footer {
-    padding-right: 8rem;
-    padding-left: 8rem;
-  }
-}
-
-@media (min-width: 64em) {
-  .footer {
-    padding-right: 10rem;
-    padding-left: 10rem;
-  }
-}
-
-.footer .license img {
-  display: inline-block;
-  margin: 0;
-}
-
-.profile {
-  float: right;
-  margin-left: 2rem;
 }
 
 code {

@@ -2,11 +2,7 @@
 title = "About"
 description = "Software developer interested in creating scalable applications based on microservices and docker"
 menu = "main"
-comments = false
-showdate = false
 +++
-
-<img class="profile" src="http://www.gravatar.com/avatar/bb982f60f7ce4de442b37f496730d3fd?s=200" />
 
 Hello! I am Erwin Steffens, a software developer from [Schoonebeek, The Netherlands](https://nl.wikipedia.org/wiki/Schoonebeek).
 
