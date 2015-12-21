@@ -12,7 +12,10 @@ Always interested in new technologies, programming languages and methods. I spen
 
 ## Main interests
 
-* Asp.NET vNext, NodeJS, AngularJS, Go
+* Asp.NET vNext
+* NodeJS
+* Go
+* AngularJS
 * Microservices
 * Docker 
 * Devops
