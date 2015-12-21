@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+
+<h1 class="post-title">All posts</h1>
+
+{{ range .Data.Pages.GroupByDate "2006-01" "Section" "post" }}
+<h3>{{ .Key }}</h3>
+<ul class="posts">
+    {{ range .Pages }}
+    <li>
+      <span><a href="{{ .Permalink }}">{{ .Title }}</a></span>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}
+
+{{ partial "footer.html" . }}

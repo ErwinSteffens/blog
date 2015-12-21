@@ -1,0 +1,17 @@
+name = "blog-theme"
+license = "MIT"
+licenselink = "https://github.com/erwinsteffens/blog-theme/blob/master/LICENSE.md"
+description = "Blog theme based on the popular hyde theme"
+tags = ["blog", "company"]
+features = ["blog", "themes", "disqus"]
+min_version = 0.15
+
+[author]
+    name = "erwinsteffens"
+    homepage = "http://erwinsteffens.com"
+
+# If Porting existing theme
+[original]
+    author = "spf13"
+    homepage = "http://spf13.com"
+    repo = "https://www.github.com/spf13/hyde"
