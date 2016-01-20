@@ -2,8 +2,8 @@
 title = "Auto deploy your static site with Docker and Tutum"
 description = "Deploy your static website automatically after pushing to master by using Docker and Tutum."
 date = "2015-12-09T22:10:38+01:00"
-categories = ["tutum", "cd"]
-tags = ["tutum", "cd", "docker", "hugo"]
+categories = ["Tutum", "CD"]
+tags = ["Tutum", "CD", "Docker", "Hugo"]
 +++
 
 When I decided to create my own blog I wanted to use a static site generator. Static sites are fast and secure and really cheap to host. There are great tools to built them and one of these tools is [Hugo](https://gohugo.io). Hugo is extremly easy to setup and is really fast. 
