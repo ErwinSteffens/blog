@@ -3,8 +3,7 @@ date = "2016-01-11T11:03:52+01:00"
 description = "How to migrate your existing .net project which uses NuGet packages to paket for better and easier package management."
 tags = ["Development", "Paket", ".Net", "NuGet"]
 categories = ["Development", ".Net"]
-title = "Migrate your project from nuget to paket"
-draft = true 
+title = "Migrate your project from nuget to paket" 
 +++
 
 For one of our projects we splitted up a big solutions by using NuGet packages. Therefore we became heavy users of NuGet and the NuGet tooling. We quickly became frustrated by using the NuGet tooling provided in Visual Studio because it is slow and there are some problems like:
