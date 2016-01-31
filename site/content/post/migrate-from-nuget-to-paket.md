@@ -15,6 +15,7 @@ For one of our projects we splitted up a big solutions by using NuGet packages. 
 We started looing for alternatives and found [Paket](https://fsprojects.github.io/Paket/index.html). Paket is a dependency manager for .Net and mono projects. Paket can work with [NuGet](https://www.nuget.org/) packages, [Git](https://fsprojects.github.io/Paket/git-dependencies.html) repositories and [HTTP](https://fsprojects.github.io/Paket/http-dependencies.html) resources. More information about why Paket is better than NuGet can be found [here](http://fsprojects.github.io/Paket/faq.html).
 
 Paket has a good [migration guide](http://fsprojects.github.io/Paket/convert-from-nuget-tutorial.html) but we added some additional steps which I will describe here.
+<!--more-->
 
 ## Convert from NuGet
 
