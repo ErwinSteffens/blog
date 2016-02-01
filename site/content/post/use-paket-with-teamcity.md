@@ -54,26 +54,22 @@ $outputDir = ".\paket-pack-out"
 if (Test-Path .\.paket)
 {
     // Package all found paket.template files
-    & .\.paket\paket.exe pack output $outputDir `
-        version $packageVersion `
-        buildconfig $buildConfig `
-        symbols
+    & .\.paket\paket.exe pack output $outputDir version $packageVersion `
+        buildconfig $buildConfig symbols
 
     // Find all created packages
     Get-ChildItem "$outputDir\*.$packageVersion.nupkg" | % {
         $packagePath = $_
         
         // Check if a symbols package is created
-        $symbolsPackagePath = $packagePath `
-            -replace ".nupkg",".symbols.nupkg"
+        $symbolsPackagePath = $packagePath -replace ".nupkg",".symbols.nupkg"
         if (Test-Path $symbolsPackagePath)
         {
             $packagePath = $symbolsPackagePath
         }
 
         // Push the package to the feed
-        & .\.paket\paket.exe push url $nugetFeed `
-            file $packagePath apikey $nugetKey 
+        & .\.paket\paket.exe push url $nugetFeed file $packagePath apikey $nugetKey 
     }
 }
 ```
