@@ -19,18 +19,34 @@ We use build configuration templates to manage the build process for multiple pr
 
 We use a fixed version of Paket because it makes or build reproducable. New Paket versions are released on a daily basis and we do not want a new version of Paket to break our build. Consistent builds are the most important part of your development process. The `paket.exe` does [not need to be added](https://fsprojects.github.io/Paket/getting-started.html#Downloading-Paket-and-it-s-BootStrapper) to your repo. Therefore we use the `paket.bootstrapper.exe` for restoring the correct Paket version for us. The Paket version is specified in a TeamCity variable called `%paket.version%`. 
 
-Add a PowerShell build step before your solution build step to your build configuration containing the following code which will execute all the steps above.
+Add a PowerShell build step before your solution build step to your build configuration containing the following script. Provide the needed parameters to the script and it will execute all the steps above. 
 
 ``` powershell
-$paketVersion = %paket.version%
+param(
+    [string]
+    $paketVersion = ""
+)
+
+# Quit on errors
+trap
+{
+    Write-Error $_
+    exit 1
+}
 
 if (Test-Path .\.paket)
 {
-    // Download latest paket.exe
+    # Download paket 
     & .\.paket\paket.bootstrapper.exe $paketVersion
-    
-    // Restore all packages
+    if ($LastExitCode -ne 0) {
+        throw "Failed to download paket. Exit code: $LastExitCode"
+    }
+
+    # Restore packages
     & .\.paket\paket.exe restore
+    if ($LastExitCode -ne 0) {
+        throw "Failed to restore packages with paket. Exit code: $LastExitCode"
+    }
 }
 ```
 
@@ -38,39 +54,66 @@ if (Test-Path .\.paket)
 
 Paket uses `paket.template` files for creating packages. When running the `pack` command, it will create packages for all `paket.template` files found in all subdirectories. We store the created packages in the `.\paket-pack-out` folder.
 
-To publish the packages we just search for all packages in the `.\paket-pack-out` folder. Remember that TeamCity can re-use the working directory which still contains packages from previous builds. Therefore we search for packages with the version number of the current build to publish and push these packages onto our NuGet feed.
+To publish a package we just use the 'push' command. Remember that TeamCity can re-use the working directory which still contains packages from previous builds. Therefore we use the package with the version number of the current build to publish and push this package onto our NuGet feed.
 
-When you specify the `symbols` options, Paket will create symbols packages with a `.symbols.nupkg` extension. This will only happen for `paket.template` files which contain `type project`. Because we also create content packages which does not have a project origin, we check if a symbols package is created. When it is, we publish the symbols packages. When not, we publish the normal package.
+When you specify the `symbols` options, Paket will create symbols packages with a `.symbols.nupkg` extension. This will only happen for `paket.template` files which contain `type project`. Because we also create content packages which does not have a project origin, we check if a symbols package is created. When it is, we publish the symbols package. When not, we publish the normal package.
 
-Add a PowerShell build step after your solution build step containing the following code which will execute all the steps above.
+Add a PowerShell build step after your solution build step containing the following script. Provide the needed parameters to the script and it will execute all the steps above. 
 
 ``` powershell
-$packageVersion = %build.number%
-$nugetKey = %nuget.apiKey%
-$nugetFeed = %nuget.publishFeed%
-$buildConfig = %build.config%
-$outputDir = ".\paket-pack-out"
+param(
+    [string]
+    $paketVersion = "",
+    [string]
+    $paketOutputFolder = ".\paket-pack-out",
+    [Parameter(Mandatory=$true)]
+    [string]
+    $version,
+    [Parameter(Mandatory=$true)]
+    [string]
+    $buildConfig,
+    [Parameter(Mandatory=$true)]
+    [string]
+    $templateFile,
+    [Parameter(Mandatory=$true)]
+    [string]
+    $packageName,
+    [Parameter(Mandatory=$true)]
+    [string]
+    $nugetFeed,
+    [Parameter(Mandatory=$true)]
+    [string]
+    $nugetApiKey
+)
+
+# Quit on errors
+trap
+{
+    Write-Error $_
+    exit 1
+}
 
 if (Test-Path .\.paket)
 {
-    // Package all found paket.template files
-    & .\.paket\paket.exe pack output $outputDir version $packageVersion `
-        buildconfig $buildConfig symbols
+	# Create the package from the template file
+	& .\.paket\paket.exe pack output $paketOutputFolder version $version buildconfig $buildConfig templatefile $templateFile
+	if ($LastExitCode -ne 0) {
+		throw "Failed to pack package with paket. Exit code: $LastExitCode"
+	}
 
-    // Find all created packages
-    Get-ChildItem "$outputDir\*.$packageVersion.nupkg" | % {
-        $packagePath = $_
-        
-        // Check if a symbols package is created
-        $symbolsPackagePath = $packagePath -replace ".nupkg",".symbols.nupkg"
-        if (Test-Path $symbolsPackagePath)
-        {
-            $packagePath = $symbolsPackagePath
-        }
-
-        // Push the package to the feed
-        & .\.paket\paket.exe push url $nugetFeed file $packagePath apikey $nugetKey 
-    }
+	# Check if a symbols package is created
+	$packagePath = "$paketOutputFolder\$packageName.$version.nupkg"
+	$symbolsPackagePath = $packagePath -replace ".nupkg",".symbols.nupkg"
+	if (Test-Path $symbolsPackagePath)
+	{
+		$packagePath = $symbolsPackagePath
+	}
+	
+	# Push the package
+	& .\.paket\paket.exe push url $nugetFeed file $packagePath apikey $nugetApiKey
+	if ($LastExitCode -ne 0) {
+		throw "Failed to push package with paket. Exit code: $LastExitCode"
+	}
 }
 ```
 
