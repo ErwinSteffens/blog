@@ -12,7 +12,7 @@ paginate = 10
  	name = "Erwin Steffens"
 
 [params]
-    highlight = "github"
+    highlight = "rainbow"
     showCategories = false
     tagline = "Software developer interested in creating scalable applications based on microservices and docker"
     home = "Home"

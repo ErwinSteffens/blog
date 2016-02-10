@@ -18,6 +18,10 @@ html {
   }
 }
 
+body {
+  background: #f9f9f9;
+}
+
 a {
   color: #73afb6;
 }
@@ -100,35 +104,41 @@ a {
 }
 
 .content {
-  padding-top: 1.4rem;
-  padding-bottom: 2rem;
+  padding: 1.4rem 3rem 2rem 3rem;
+  background-color: #fff;
 }
 
 .content h1 {
-    margin-top: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .content pre {
+  margin-left: -3rem;
+  margin-right: -3rem;
+  padding: 0;
   white-space: pre;
   word-wrap: normal;
 }
 
 .content code {
   font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+  border-radius: 0;
+}
+
+.content code.hljs {
+  padding: 1rem 3rem;
 }
 
 @media (min-width: 48em) {
   .content {
     max-width: 38rem;
-    margin-left: 20rem;
-    margin-right: 2rem;
+    margin-left: 18rem;
   }
 }
 
 @media (min-width: 64em) {
   .content {
-    max-width: 44rem;
-    margin-right: 4rem;
+    max-width: 62rem;
   }
 }
 
