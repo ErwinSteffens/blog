@@ -6,6 +6,10 @@ categories = ["Tutum", "CD"]
 tags = ["Tutum", "CD", "Docker", "Hugo"]
 +++
 
+> DEPRECATED!
+> Tutum is acquired by Docker and the Tutum service is re-branded to Docker Cloud. The concepts described in this post are still usable, but the content can be outdated.
+
+
 When I decided to create my own blog I wanted to use a static site generator. Static sites are fast and secure and really cheap to host. There are great tools to built them and one of these tools is [Hugo](https://gohugo.io). Hugo is extremly easy to setup and is really fast. 
 
 After searching for a docker deployment tool at my current job I came across [Tutum](https://tutum.co). Tutum is a great tool for building, deploying and managing docker containers. To get some experience with docker and Tutum I decided to automatically deploy my blog with Tutum.
