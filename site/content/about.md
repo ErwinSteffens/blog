@@ -1,21 +1,20 @@
 +++
 title = "About"
-description = "Software developer interested in creating scalable applications based on microservices and docker"
+description = "Software developer interested in creating scalable applications based on .NET Core and containerized microservices"
 menu = "main"
 +++
 
 Hello! I am Erwin Steffens, a software developer from [Schoonebeek, The Netherlands](https://nl.wikipedia.org/wiki/Schoonebeek).
 
-Currently employed at [Cross Point](http://www.crosspoint.nl) where I build C# .NET based applications for desktop, cloud (Azure) and web. 
+Currently employed at [Rovecom](http://rovecom.nl) where I build applications for desktop, cloud (Azure) and web. 
 
-Always interested in new technologies, programming languages and methods. I spent a lot of my free time reading about 'the new stack' based on microservices and Docker.
+Always interested in new technologies, programming languages and methods. I spent a lot of my free time reading about .NET Core, microservices and Docker.
 
 ## Main interests
 
-* Asp.NET vNext
+* .NET Core
 * NodeJS
-* Go
-* AngularJS
+* Angular
 * Microservices
 * Docker 
 * Devops
