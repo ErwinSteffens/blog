@@ -4,104 +4,111 @@
  */
 
 html {
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
 }
+
 @media (min-width: 48em) {
-  html {
-    font-size: 18px;
-  }
+    html {
+        font-size: 18px;
+    }
 }
+
 @media (min-width: 58em) {
-  html {
-    font-size: 18px;
-  }
+    html {
+        font-size: 18px;
+    }
 }
 
 a {
-  color: #73afb6;
+    color: #73afb6;
 }
 
 .sidebar {
-  text-align: center;
-  padding: 2rem 1rem;
-  color: rgba(255,255,255,.5);
-  background-color: #5e9ca0;
+    text-align: center;
+    padding: 2rem 1rem;
+    color: rgba(255, 255, 255, .5);
+    background-color: #6a9fb5;
 }
 
 @media (min-width: 48em) {
-  .sidebar {
-    text-align: right;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 18rem;
-  }
+    .sidebar {
+        text-align: right;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 18rem;
+    }
 }
 
 @media (min-width: 48em) {
-  .sidebar-sticky {
-    position: absolute;
-    right:  1rem;
-    bottom: 1rem;
-    left:   1rem;
-  }
+    .sidebar-sticky {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        left: 1rem;
+    }
 }
 
 .sidebar .lead {
-  font-size: 1rem;
-  margin-top: 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
 }
 
 .sidebar a {
-  color: #fff;
+    color: #fff;
 }
 
 .sidebar nav a {
-  font-size: 1rem;
+    font-size: 1rem;
 }
 
 .sidebar .about h1 {
-  color: #fff;
-  margin-top: 0;
-  font-size: 3.25rem;
-  line-height: 1;
+    color: #fff;
+    margin-top: 0;
+    font-size: 3.25rem;
+    line-height: 1;
 }
 
 .sidebar nav ul {
-  padding: 0;
-  list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 .sidebar nav.main li {
-  display: block;
+    display: block;
 }
+
 .sidebar nav.main li:hover,
 .sidebar nav.main li:focus {
-  text-decoration: underline;
+    text-decoration: underline;
 }
+
 .sidebar nav.main li.active {
-  font-weight: bold;
+    font-weight: bold;
 }
+
 .sidebar nav.social {
-  margin-top: 1.25rem;  
+    margin-top: 1.25rem;
 }
+
 .sidebar nav.social a {
-  margin: .25rem;
+    margin: .25rem;
 }
+
 .sidebar nav.social a:first-of-type {
-  margin-left: 0;
+    margin-left: 0;
 }
 
 .generatedby {
-  font-size: .75rem;
-  margin-top: .75rem;
+    font-size: .75rem;
+    margin-top: .75rem;
 }
 
 .content {
-  padding-top: 1.4rem;
-  padding-bottom: 2rem;
+    padding-top: 1.4rem;
+    padding-bottom: 2rem;
 }
 
 .content h1 {
@@ -109,48 +116,51 @@ a {
 }
 
 .content pre {
-  white-space: pre;
-  word-wrap: normal;
+    white-space: pre;
+    word-wrap: normal;
 }
 
 .content code {
-  font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
+    font-family: Consolas, Menlo, Monaco, "Courier New", monospace;
 }
 
 @media (min-width: 48em) {
-  .content {
-    max-width: 38rem;
-    margin-left: 20rem;
-    margin-right: 2rem;
-  }
+    .content {
+        max-width: 38rem;
+        margin-left: 20rem;
+        margin-right: 2rem;
+    }
 }
 
 @media (min-width: 64em) {
-  .content {
-    max-width: 44rem;
-    margin-right: 4rem;
-  }
+    .content {
+        max-width: 44rem;
+        margin-right: 4rem;
+    }
 }
 
 .post-label {
-  display: inline;
-  padding: .2rem .3rem;
-  font-size: 75%;  
-  line-height: 1;
-  color: #fff;
-  margin: 0 .25em;
-  background-color: #73afb6;
-  border-radius: .25em;
+    display: inline;
+    padding: .2rem .3rem;
+    font-size: 75%;
+    line-height: 1;
+    color: #fff;
+    margin: 0 .25em;
+    background-color: #73afb6;
+    border-radius: .25em;
 }
+
 .post-label:first-of-type {
-  margin-left: 0;
+    margin-left: 0;
 }
+
 .post-label:hover,
 .post-label:focus {
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
+
 .post-label:empty {
-  display: none;
+    display: none;
 }

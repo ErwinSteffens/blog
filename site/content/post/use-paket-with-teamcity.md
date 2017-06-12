@@ -3,7 +3,7 @@ date = "2016-01-20T21:36:17+01:00"
 title = "Use paket with TeamCity"
 description = "How to integrate package manager Paket into your TeamCity builds with PowerShell."
 tags = ["Development", "TeamCity", "Paket"]
-categories = ["Development", "TeamCity"]
+categories = ["Development"]
 +++
 
 For a project I was working on we started migrating to [Paket](https://fsprojects.github.io/Paket/) for managing our NuGet dependencies. We use TeamCity as our CI environment. TeamCity has great support for using NuGet tooling, but there is no plugin for Paket.

@@ -8,16 +8,14 @@ Hello! I am Erwin Steffens, a software developer from [Schoonebeek, The Netherla
 
 Currently employed at [Rovecom](http://rovecom.nl) where I build applications for desktop, cloud (Azure) and web. 
 
-Always interested in new technologies, programming languages and methods. I spent a lot of my free time reading about .NET Core, microservices and Docker.
+Always interested in new technologies, programming languages and methods. I spent a lot of my free time reading about new programming languages, methods and tools.
 
 ## Main interests
 
 * .NET Core
-* NodeJS
-* Angular
-* Microservices
-* Docker 
-* Devops
+* Front-end development with React and React Native
+* Micro-services
+* Devops by using Docker and K8S
 
 ## Code
 

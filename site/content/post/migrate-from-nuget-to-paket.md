@@ -1,8 +1,8 @@
 +++
 date = "2016-01-11T11:03:52+01:00"
 description = "How to migrate your existing .net project which uses NuGet packages to paket for better and easier package management."
-tags = ["Development", "Paket", ".Net", "NuGet"]
-categories = ["Development", ".Net"]
+tags = ["Development", "Paket", "Dotnet", "NuGet"]
+categories = ["Development"]
 title = "Migrate your project from nuget to paket" 
 +++
 

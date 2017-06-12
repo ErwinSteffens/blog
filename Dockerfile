@@ -4,7 +4,7 @@ MAINTAINER Erwin Steffens <erwinsteffens@gmail.com>
 RUN npm install http-server -g
 
 ENV PORT 8080
-ENV HUGO_VERSION 0.17
+ENV HUGO_VERSION 0.21
 ENV HUGO_ARCHIVE hugo_${HUGO_VERSION}_Linux-64bit.tar.gz
 
 ADD https://github.com/spf13/hugo/releases/download/v${HUGO_VERSION}/${HUGO_ARCHIVE} /usr/local/

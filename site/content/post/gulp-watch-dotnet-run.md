@@ -1,7 +1,7 @@
 +++
 date = "2017-01-25T20:25:28+01:00"
 tags = ["Gulp","Dotnet","Core","Watch"]
-categories = ["Dotnet"]
+categories = ["Development"]
 description = "Use gulp watch to automatically rebuild a .NET core project on a file change"
 title = "Gulp watch and dotnet run"
 +++
